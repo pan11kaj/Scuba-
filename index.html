@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Scuba Driving</title>
+
+    <!-- <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script> -->
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/n5ro/aframe-physics-system@v4.0.1/dist/aframe-physics-system.min.js">
+    </script>
+
+</head>
+
+<body>
+    <a-scene physics>
+        <a-sky src="sky.jpeg"></a-sky>
+        <a-camera wasd-controls-enabled="false" position="0 15.9 18" id="cam"></a-camera>
+        <a-assets timeout="10000">
+            <a-asset-item id="iland" src="./models/map/scene.gltf"></a-asset-item>
+            <a-asset-item id="man" src="./models/man/model.gltf"></a-asset-item>
+        </a-assets>
+
+        <a-entity id="sea" gltf-model="#iland" position="0 -12 0" Animation="property:position;to :0 -12 +200;dur:60000"
+            fish coins></a-entity>
+        <a-entity id="controlman" gltf-model="#man" position="0 15 18" scale="0.001 0.001 0.001" rotation="180 360 90"
+            control dynamic-body="mass: 0" game></a-entity>
+        <a-text text="value:Score:;font:exo2bold;width:10" position="18 30 -5" scale="5 5 5" color="green"></a-text>
+        <a-text text="value:0;font:exo2bold;width:10" position="25 30 -5" scale="5 5 5" color="yellow" id="score">
+        </a-text>
+        <a-text text="value:Time:;font:exo2bold;width:10" position="-25 30 -5" scale="5 5 5" color="green"></a-text>
+        <a-text text="value:10;font:exo2bold;width:10" position="-18 30 -5" scale="5 5 5" color="red" id="time">
+        </a-text>
+        <a-text text="value:seconds;font:exo2bold;width:10" position="-13.7 30 -5" scale="5 5 5" color="blue"></a-text>
+
+        <a-text text="value:Game Over!!;font:exo2bold;width:10" position="-13.7 15 -5" scale="15 15 15"
+            color="greenyellow" id="over" visible="false"></a-text>
+    </a-scene>
+    <!-- <script src="index.js"></script> -->
+    <script src="./js/fishes.js"></script>
+    <script src="./js/mancontrol.js"></script>
+    <script src="./js/gameplay.js"></script>
+
+</body>
+
+</html>
